@@ -1,0 +1,12 @@
+const AppError = require('../utils/AppError');
+
+const validate = (schema) => (req, res, next) => {
+    try {
+        schema.parse(req.body);
+        next();
+    } catch (error) {
+        next(error);
+    }
+};
+
+module.exports = validate;
