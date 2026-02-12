@@ -13,30 +13,43 @@ This plan outlines the roadmap to building a premium React frontend and integrat
 - [ ] **Animations**: Initialize `Framer Motion` for micro-interactions and page transitions.
 
 ## Phase 2: Core Logic & API Integration
-- [ ] **State Management**:
-    - Set up `TanStack Query` (React Query) for elegant data fetching and caching.
-    - Implement `Zustand` or React Context for global auth state.
-- [ ] **API Client**:
-    - Create a central Axios instance with request/response interceptors.
-    - Implement automatic JWT attachment to outgoing requests.
-- [ ] **Routing**:
-    - Configure `React Router` with Protected Routes (redirecting to login if non-authenticated).
-- [ ] **Validation Sync**:
-    - Replicate/Shared Zod schemas to ensure frontend validation matches backend constraints.
+- [ ] **Registration Logic**:
+    - [ ] **Validation**: Replicate `registerSchema` (username, email, password) from backend using Zod.
+    - [ ] **Service**: Add `authService.ts` with `register` method.
+    - [ ] **UI**: Create `RegisterPage.tsx` with Glassmorphism design.
+        - Inputs: Username, Email, Password.
+        - Feedback: Real-time validation errors, toaster notifications for success/failure.
+    - [ ] **Security**: Implement XSS protection.
+        - Install `dompurify` to sanitize all user inputs before sending to API.
+        - Create a utility hook/function for input sanitization.
+    - [ ] **Login Logic**:
+        - [ ] **Validation**: Replicate `loginSchema` (email, password) using Zod.
+        - [ ] **Service**: Add `login` method to `authService.ts` handling JWT storage.
+        - [ ] **UI**: Update `LoginPage.tsx` to use real form submission.
+    - [ ] **Routing**: Add `/register` route and protect `/`.
 
-## Phase 3: UI Implementation (The "Premium" Look)
+
+## Phase 3: UI Implementation (The "Premium" Look) & Task Management
 - [ ] **Auth Pages**:
-    - Create a Glassmorphism-style Login and Registration interface.
-    - Add real-time field validation feedback.
+    - [ ] Create a Glassmorphism-style Login and Registration interface.
+    - [ ] Add real-time field validation feedback.
 - [ ] **Main Dashboard**:
-    - Build a "Task Desk" view with a clean, minimalist layout.
-    - Implement a sidebar/header for user profile and logout.
-- [ ] **Task Components**:
-    - **TaskCard**: Feature subtle hover effects, priority badges, and smooth completion toggles.
-    - **TaskForm**: Implement a sleek modal or slide-over for adding/editing tasks.
+    - [ ] Build a "Task Desk" view with a clean, minimalist layout.
+    - [ ] Implement a sidebar/header for user profile and logout.
+- [ ] **Task Components** (Enhanced):
+    - [ ] **TaskCard**: Feature subtle hover effects, priority badges.
+    - [ ] **Task Actions**:
+        - [ ] **Complete**: Clicking circle icon triggers `ConfirmationModal` ("Mark as complete? Yes/No").
+        - [ ] **Edit**: Update description via modal/inline.
+        - [ ] **Delete**: Button to remove task.
+    - [ ] **Add Task**: 
+        - [ ] Wire up "+ Add Task" button to a `CreateTaskModal` (Dialog).
+- [ ] **Data Layer**:
+    - [ ] Create `todoService.ts` interacting with `/api/todos`.
+    - [ ] Define Zod schemas for Task creation/updates.
 - [ ] **UX Polish**:
-    - Add Skeleton Loaders for "instant feel" during data fetches.
-    - Implement "Optimistic Updates" (tasks appear/change instantly before the server responds).
+    - [ ] Add Skeleton Loaders for "instant feel" during data fetches.
+    - [ ] Implement "Optimistic Updates" (tasks appear/change instantly before server responds).
 
 ## Phase 4: Full-Stack Integration & DevOps
 - [ ] **Environment Context**:
