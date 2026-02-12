@@ -58,16 +58,20 @@ app.get('/', (req, res) => {
     res.status(200).json({ status: 'ok', message: 'To-Do API is running' });
 });
 
-// User Routes
-app.post('/register', validate(registerSchema), userController.register);
-app.post('/login', validate(loginSchema), userController.login);
+const apiRouter = express.Router();
+
+apiRouter.post('/register', validate(registerSchema), userController.register);
+apiRouter.post('/login', validate(loginSchema), userController.login);
 
 // Todo Routes (under authentication)
-app.use('/todos', authenticate);
-app.post('/todos', validate(createTodoSchema), todoController.createTodo);
-app.get('/todos', todoController.getTodos);
-app.put('/todos/:id', validate(updateTodoSchema), todoController.updateTodo);
-app.delete('/todos/:id', todoController.deleteTodo);
+apiRouter.use('/todos', authenticate);
+apiRouter.post('/todos', validate(createTodoSchema), todoController.createTodo);
+apiRouter.get('/todos', todoController.getTodos);
+apiRouter.put('/todos/:id', validate(updateTodoSchema), todoController.updateTodo);
+apiRouter.delete('/todos/:id', todoController.deleteTodo);
+
+// Mount API router
+app.use('/api', apiRouter);
 
 // Handle unhandled routes (catch-all)
 app.use((req, res, next) => {
