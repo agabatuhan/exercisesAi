@@ -50,6 +50,19 @@ class UserService {
 
         return { token, role: user.role };
     }
+
+    async getProfile(userId) {
+        const user = await redisClient.hGetAll(`user:${userId}`);
+        if (!user || Object.keys(user).length === 0) {
+            throw new AppError('User not found', 404);
+        }
+        return {
+            id: user.id,
+            username: user.username,
+            email: user.email,
+            role: user.role
+        };
+    }
 }
 
 module.exports = new UserService();
