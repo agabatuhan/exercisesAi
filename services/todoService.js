@@ -14,7 +14,7 @@ class TodoService {
             status: 'pending',
             createdAt: new Date().toISOString()
         };
-
+        console.log("todo", todo);
         await redisClient.hSet(`todo:${todoId}`, todo);
         await redisClient.sAdd(`user:${userId}:todos`, todoId);
         await redisClient.sAdd(`todos:all`, todoId);
