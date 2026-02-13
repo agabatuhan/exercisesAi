@@ -14,7 +14,10 @@
   "type": "commonjs",
   "dependencies": {
     "bcryptjs": "^3.0.3",
+<<<<<<< HEAD
     "cookie-parser": "^1.4.7",
+=======
+>>>>>>> 52f0b2b14a4535d2b2beab190e8cbcc4d34a007f
     "cors": "^2.8.6",
     "cross-env": "^10.1.0",
     "dotenv": "^17.2.4",
@@ -34,4 +37,8 @@
     "nodemon": "^3.1.11",
     "supertest": "^7.2.2"
   }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 52f0b2b14a4535d2b2beab190e8cbcc4d34a007f

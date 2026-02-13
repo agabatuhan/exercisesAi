@@ -50,6 +50,7 @@ class UserService {
 
         return { token, role: user.role };
     }
+<<<<<<< HEAD
 
     async getProfile(userId) {
         const user = await redisClient.hGetAll(`user:${userId}`);
@@ -63,6 +64,8 @@ class UserService {
             role: user.role
         };
     }
+=======
+>>>>>>> 52f0b2b14a4535d2b2beab190e8cbcc4d34a007f
 }
 
 module.exports = new UserService();

@@ -3,9 +3,13 @@ const AppError = require('../utils/AppError');
 
 const authenticate = (req, res, next) => {
     let token;
+<<<<<<< HEAD
     if (req.cookies.token) {
         token = req.cookies.token;
     } else if (
+=======
+    if (
+>>>>>>> 52f0b2b14a4535d2b2beab190e8cbcc4d34a007f
         req.headers.authorization &&
         req.headers.authorization.startsWith('Bearer')
     ) {
